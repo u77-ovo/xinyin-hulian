@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#07110f" />
+  <title>守真 AI｜双龄反诈互动助手</title>
+  <meta name="description" content="面向老年人与大学生的双模式 AI 防骗互动演示应用" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <div class="noise"></div>
+
+  <header class="topbar">
+    <button class="brand" data-go="home" aria-label="返回首页">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32"><path d="M16 3 27 7v8c0 7.2-4.4 11.5-11 14-6.6-2.5-11-6.8-11-14V7l11-4Z"/><path d="m10.5 16 3.4 3.4 7.8-8"/></svg>
+      </span>
+      <span><strong>守真 AI</strong><small>TRUTH GUARD</small></span>
+    </button>
+
+    <div class="mode-switch" role="group" aria-label="人群模式切换">
+      <button class="mode-btn active" data-mode="elder"><span>长辈模式</span></button>
+      <button class="mode-btn" data-mode="student"><span>校园模式</span></button>
+    </div>
+
+    <nav class="top-actions">
+      <div class="elder-readable-badge" id="elderReadableBadge"><span>大</span><b>大字模式</b><em>已开启</em></div>
+      <button class="ghost-button" data-open="blueprint">方案蓝图</button>
+      <button class="icon-button" data-open="privacy" aria-label="隐私说明">
+        <svg viewBox="0 0 24 24"><path d="M12 3 20 6v6c0 5-3.1 8-8 10-4.9-2-8-5-8-10V6l8-3Z"/><path d="M9.5 12.2 11 13.7l3.8-4"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="screen active" id="homeScreen">
+      <div class="hero-shell">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="live-dot"></span> 双龄反诈交互系统 · 课堂演示版</div>
+          <h1>不是替你判断，<br /><em>而是陪你把真相查清。</em></h1>
+          <p id="heroDescription">一句话、一通电话，就能启动核验。我们用大字、语音和清晰步骤，把复杂风险讲明白。</p>
+          <div class="hero-actions">
+            <button class="primary-button" id="startMainCheck">
+              <span id="mainActionLabel">开始语音核验</span>
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M14 7l5 5-5 5"/></svg>
+            </button>
+            <button class="secondary-button" id="startScenario">进入防骗演练</button>
+          </div>
+          <div class="trust-row">
+            <div><strong>0</strong><span>默认留存</span></div>
+            <i></i>
+            <div><strong>2×</strong><span>可疑结果复核</span></div>
+            <i></i>
+            <div><strong>1键</strong><span>人工求助</span></div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="动态风险防护演示">
+          <div class="orbit orbit-a"></div>
+          <div class="orbit orbit-b"></div>
+          <div class="radar-grid"></div>
+          <div class="radar-sweep"></div>
+          <div class="shield-core">
+            <svg viewBox="0 0 90 100"><path d="M45 5 82 18v28c0 24-14.8 38.5-37 47-22.2-8.5-37-23-37-47V18L45 5Z"/><path d="m27 48 11 11 26-29"/></svg>
+          </div>
+          <div class="signal-card signal-one"><span class="signal-icon">☎</span><div><small>来电风险</small><strong>正在守护</strong></div></div>
+          <div class="signal-card signal-two"><span class="signal-icon">AI</span><div><small>换脸伪造</small><strong>多模态核验</strong></div></div>
+          <div class="signal-card signal-three"><span class="signal-icon">✓</span><div><small>复核机制</small><strong>避免误判</strong></div></div>
+        </div>
+      </div>
+
+      <div class="entry-grid">
+        <button class="entry-card featured" data-action="check">
+          <span class="entry-number">01</span>
+          <div class="entry-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 7v5l3 2M17 3h4v4"/></svg>
+          </div>
+          <div><strong id="checkCardTitle">帮我听听这通电话</strong><p id="checkCardDesc">按一下，复述对方说的话</p></div>
+          <span class="entry-arrow">↗</span>
+        </button>
+        <button class="entry-card" data-action="scenario">
+          <span class="entry-number">02</span>
+          <div class="entry-icon"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h5M8 16h3"/></svg></div>
+          <div><strong>骗局情景演练</strong><p>3 分钟练出识骗反应</p></div>
+          <span class="entry-arrow">↗</span>
+        </button>
+        <button class="entry-card" data-action="review-demo">
+          <span class="entry-number">03</span>
+          <div class="entry-icon"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.7L4 8.6"/><path d="M4 4v4.6h4.6M9 12h6"/></svg></div>
+          <div><strong>AI 判断不对？</strong><p>体验二次复核与纠错</p></div>
+          <span class="entry-arrow">↗</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="screen" id="checkScreen">
+      <div class="workspace-head">
+        <button class="back-button" data-go="home"><span>←</span> 返回</button>
+        <div><span class="section-kicker" id="checkKicker">长辈模式 · 来电核验</span><h2 id="checkTitle">把可疑的话，交给我们一起听</h2></div>
+        <div class="local-badge"><span></span> 演示数据 · 不会上传</div>
+      </div>
+
+      <div class="check-layout elder-layout" id="checkLayout">
+        <article class="input-panel glass-panel">
+          <div class="panel-label"><span>01</span><b id="inputStepTitle">说出对方刚才的话</b></div>
+
+          <div class="voice-stage" id="voiceStage">
+            <div class="voice-rings"><i></i><i></i><i></i></div>
+            <button class="voice-button" id="voiceButton" aria-label="开始录音">
+              <svg viewBox="0 0 24 24"><rect x="8" y="3" width="8" height="13" rx="4"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"/></svg>
+            </button>
+            <strong id="voiceHint">点击麦克风，开始说话</strong>
+            <small id="voiceSubHint">录音不会自动结束，由您亲自确认停止</small>
+            <div class="recording-console" id="recordingConsole" hidden>
+              <div class="recording-status"><span class="recording-dot"></span><b>正在听您说话</b><time id="recordingTimer">00:00</time></div>
+              <div class="audio-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <label class="live-transcript"><span>听到的内容（可以手动修改）</span><textarea id="voiceTranscript" placeholder="请说出对方的原话，例如：他让我把钱转到安全账户……"></textarea></label>
+              <div class="recording-actions">
+                <button class="cancel-recording" id="cancelRecording">取消重录</button>
+                <button class="confirm-recording" id="confirmRecording"><span>✓</span> 我说完了，确认停止</button>
+              </div>
+            </div>
+            <div class="voice-ready" id="voiceReady" hidden>
+              <span class="ready-check">✓</span>
+              <div><b>语音已收到</b><p id="voiceReadySummary">已录制 00:00，可在上方修改文字</p></div>
+              <button id="recordAgain">重新录音</button>
+            </div>
+            <div class="mic-error" id="micError" hidden><b>暂时无法使用麦克风</b><span>请允许浏览器使用麦克风，或直接在文字框里输入对方说的话。</span></div>
+          </div>
+
+          <div class="upload-stage" id="uploadStage" hidden>
+            <button class="drop-zone" id="dropZone">
+              <svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 14v5h16v-5"/></svg>
+              <strong>拖入聊天截图 / 音视频</strong>
+              <span>或点击选择演示样本</span>
+              <small>支持图片、语音、视频 · 本地脱敏</small>
+            </button>
+            <div class="format-row"><span>截图 OCR</span><span>声纹异常</span><span>唇音同步</span><span>内容套路</span></div>
+          </div>
+
+          <div class="sample-picker">
+            <span>快速演示</span>
+            <button class="sample active" data-sample="fraud"><i></i><span id="fraudSampleLabel">冒充公检法</span></button>
+            <button class="sample" data-sample="safe"><i></i><span id="safeSampleLabel">社区正常通知</span></button>
+          </div>
+
+          <button class="analyze-button" id="analyzeButton"><span>开始智能核验</span><b>→</b></button>
+        </article>
+
+        <article class="analysis-panel glass-panel">
+          <div class="panel-label"><span>02</span><b>AI 核验过程</b><em id="analysisState">等待内容</em></div>
+          <div class="empty-analysis" id="emptyAnalysis">
+            <div class="scan-glyph"><span></span><span></span><span></span></div>
+            <h3>不急着下结论</h3>
+            <p>AI 会同时检查身份、话术、行为要求和上下文，再给出可解释的建议。</p>
+            <div class="checkpoints"><span>身份来源</span><span>紧迫施压</span><span>资金要求</span><span>情境一致</span></div>
+          </div>
+
+          <div class="scanning-analysis" id="scanningAnalysis" hidden>
+            <div class="scan-line"></div>
+            <div class="transcript-card">
+              <div class="avatar-mini">警</div>
+              <p id="transcriptText">“我是公安局王警官，你涉嫌洗钱。不要告诉家人，马上把钱转到安全账户……”</p>
+            </div>
+            <div class="scan-steps">
+              <div class="scan-step"><i></i><span>识别信息来源</span><b>完成</b></div>
+              <div class="scan-step"><i></i><span>拆解诱导话术</span><b>分析中</b></div>
+              <div class="scan-step"><i></i><span>交叉核验上下文</span><b>等待</b></div>
+            </div>
+          </div>
+
+          <div class="result-analysis" id="resultAnalysis" hidden>
+            <div class="risk-header">
+              <div class="risk-score"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="51"/><circle class="score-progress" cx="60" cy="60" r="51"/></svg><div><strong id="riskNumber">92</strong><span>风险分</span></div></div>
+              <div><span class="risk-tag" id="riskTag">高度可疑</span><h3 id="resultTitle">这很像冒充公检法诈骗</h3><p id="resultSubtitle">先挂断，不转账，不提供验证码。</p></div>
+            </div>
+            <div class="evidence-grid" id="evidenceGrid">
+              <div><span>01</span><b>要求保密</b><p>骗子常用“不能告诉家人”隔离受害者</p></div>
+              <div><span>02</span><b>安全账户</b><p>公检法机关不会通过电话要求转账</p></div>
+              <div><span>03</span><b>制造紧迫</b><p>用“立即处理”压缩你的思考时间</p></div>
+            </div>
+            <div class="action-strip" id="actionStrip">
+              <button class="danger-action">立即挂断</button>
+              <button>联系家人</button>
+              <button>拨打 96110</button>
+            </div>
+            <button class="disagree-link" id="disagreeButton">这条判断可能不对？申请二次复核 <span>→</span></button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="screen" id="scenarioScreen">
+      <div class="workspace-head">
+        <button class="back-button" data-go="home"><span>←</span> 退出演练</button>
+        <div><span class="section-kicker">沉浸式互动 · 反诈肌肉记忆</span><h2 id="scenarioTitle">如果这一通电话打给你……</h2></div>
+        <div class="score-badge">护盾能量 <strong id="shieldScore">40</strong></div>
+      </div>
+      <div class="scenario-wrap">
+        <div class="phone-shell">
+          <div class="phone-top"><span>09:41</span><i></i><b>5G ◉</b></div>
+          <div class="incoming-call" id="incomingCall">
+            <div class="caller-avatar" id="callerAvatar">警</div>
+            <span id="callerType">来自“公安局”的来电</span>
+            <h3 id="callerName">王警官</h3>
+            <p>正在通话 <b id="callTimer">00:18</b></p>
+            <div class="live-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="call-quote" id="callQuote">“你的银行卡涉嫌洗钱，现在必须配合调查。不要告诉任何人……”</div>
+            <div class="call-tools"><span>静音</span><span>扬声器</span><span>录音核验</span></div>
+          </div>
+        </div>
+
+        <div class="decision-panel glass-panel">
+          <span class="section-kicker">关键时刻 · 你会怎么做？</span>
+          <h2 id="decisionQuestion">对方让你添加“办案专员”并开启屏幕共享。</h2>
+          <p>请选择下一步。这里没有惩罚，每一次选择都会告诉你背后的风险。</p>
+          <div class="decision-list" id="decisionList">
+            <button data-choice="bad"><span>A</span><div><b>按要求添加并共享屏幕</b><small>先配合，证明自己没问题</small></div></button>
+            <button data-choice="maybe"><span>B</span><div><b>继续通话，问清警号</b><small>让对方先证明身份</small></div></button>
+            <button data-choice="good"><span>C</span><div><b>挂断，用官方号码回拨核验</b><small>切断对方营造的封闭情境</small></div></button>
+          </div>
+          <div class="scenario-feedback" id="scenarioFeedback" hidden>
+            <div class="feedback-icon">✓</div><div><strong id="feedbackTitle">正确：先脱离对方控制</strong><p id="feedbackText">挂断后自行查找官方电话，能避免在骗子设计的情境里被持续施压。</p></div>
+            <button id="nextScenario">下一关 →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="review-drawer" id="reviewDrawer" aria-hidden="true">
+    <div class="drawer-head">
+      <div><span class="section-kicker">防误判中心</span><h2>让 AI 再查一次</h2></div>
+      <button class="drawer-close" aria-label="关闭">×</button>
+    </div>
+    <div class="review-progress"><span class="active"></span><span></span><span></span><em id="reviewStepLabel">1 / 3 补充情境</em></div>
+
+    <div class="review-step active" data-review-step="1">
+      <div class="review-callout"><svg viewBox="0 0 24 24"><path d="M12 3 21 20H3L12 3Z"/><path d="M12 9v5M12 17h.01"/></svg><p><b>你的判断很重要。</b><br />AI 的结果是风险提示，不是最终定论。补充一点背景，能帮助我们减少误判。</p></div>
+      <h3>你认识信息发送者吗？</h3>
+      <div class="context-options">
+        <button data-context="known"><span>熟悉的人 / 已存联系人</span><i>›</i></button>
+        <button data-context="official"><span>我确认是官方机构</span><i>›</i></button>
+        <button data-context="unknown"><span>不认识或不确定</span><i>›</i></button>
+      </div>
+      <label class="note-field"><span>还有什么背景？（选填）</span><textarea id="reviewNote" placeholder="例如：这是社区工作人员通知我明天体检，之前已在群里说过……"></textarea></label>
+      <button class="drawer-primary" data-review-next="2" disabled>继续复核</button>
+    </div>
+
+    <div class="review-step" data-review-step="2">
+      <h3>正在做独立二次复核</h3>
+      <p class="muted">二次模型不会看到第一次的结论，只根据原始内容与新增背景重新判断。</p>
+      <div class="independent-review">
+        <div class="model-orb"><span>AI²</span><i></i></div>
+        <div class="review-checks">
+          <div><i></i><span>重新核验发送渠道</span><b>完成</b></div>
+          <div><i></i><span>检查情境是否连贯</span><b>完成</b></div>
+          <div><i></i><span>与第一次结果做差异比对</span><b>进行中</b></div>
+        </div>
+      </div>
+      <button class="drawer-primary" id="finishReview">查看复核结果</button>
+    </div>
+
+    <div class="review-step" data-review-step="3">
+      <div class="revised-result">
+        <div class="revised-icon">↘</div>
+        <span>复核后已调整</span>
+        <h3>风险从“高”调整为“较低”</h3>
+        <p>新增情境与已知社区通知一致，且号码可在官方公示中交叉验证。第一次模型过度依赖了“登记身份证”这个词。</p>
+      </div>
+      <div class="boundary-note"><b>仍建议你这样确认</b><span>不要点击消息中的链接，改为打开社区官方公众号或拨打已保存电话核实。</span></div>
+      <div class="feedback-box"><b>这次复核有帮助吗？</b><div><button data-feedback="yes">有帮助</button><button data-feedback="no">仍不准确</button></div><small id="feedbackThanks">反馈仅用于改进判断规则，不保存原始私密内容。</small></div>
+      <button class="drawer-primary drawer-done">完成并返回</button>
+    </div>
+  </aside>
+
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+  <section class="modal blueprint-modal" id="blueprintModal" aria-hidden="true">
+    <div class="modal-head"><div><span class="section-kicker">PRODUCT BLUEPRINT</span><h2>守真 AI · 产品方案蓝图</h2></div><button class="modal-close">×</button></div>
+    <div class="blueprint-hero"><div><span>产品定位</span><h3>一套系统，两种语言，<br />共同守住“做决定前的 30 秒”。</h3></div><p>不追求替用户宣判真假，而是在高风险时刻提供识别、解释、核验和求助路径。核心价值是提升人的判断力，而不是制造对 AI 的依赖。</p></div>
+    <div class="blueprint-grid">
+      <article><span>01 / 双模式</span><h4>同一安全内核，不同交互表面</h4><p>长辈端用语音、大字和动作建议；校园端用截图、音视频分析和诈骗链路拆解。家人可共享“可信联系人”，但隐私默认隔离。</p></article>
+      <article><span>02 / 互动玩法</span><h4>把知识变成“反诈肌肉记忆”</h4><p>来电陪伴模式、截图风险地图、AI 换脸核验仪、三分钟骗局沙盘与家庭协作护盾，让用户在关键节点练习正确动作。</p></article>
+      <article><span>03 / 防误判</span><h4>结论可质疑、可复核、可撤回</h4><p>风险用概率与证据表达；提供上下文补充、独立二次模型、官方渠道核验、人工反馈和模型版本留痕，避免“一次误判摧毁信任”。</p></article>
+      <article><span>04 / 风险边界</span><h4>AI 只做预警，不冒充执法裁决</h4><p>不保证 100% 识别，不自动拦截正常联系人，不代替报警、银行止付或法律意见；高危情况一键转 96110、银行与可信家人。</p></article>
+    </div>
+    <div class="flow-map">
+      <div><b>可疑内容进入</b><small>语音 / 截图 / 音视频</small></div><i>→</i><div><b>多模态核验</b><small>来源 + 话术 + 行为</small></div><i>→</i><div><b>分级建议</b><small>低风险 / 待核 / 高风险</small></div><i>→</i><div class="accent"><b>人机共同决定</b><small>解释 / 复核 / 求助</small></div>
+    </div>
+  </section>
+
+  <section class="modal small-modal" id="privacyModal" aria-hidden="true">
+    <div class="modal-head"><div><span class="section-kicker">PRIVACY BY DEFAULT</span><h2>隐私与安全边界</h2></div><button class="modal-close">×</button></div>
+    <div class="privacy-list">
+      <div><span>01</span><p><b>本地优先处理</b>截图与音视频先在设备端脱敏，仅上传核验所需片段。</p></div>
+      <div><span>02</span><p><b>默认不留存</b>原始消息、联系人、声纹和面部信息核验后自动清除。</p></div>
+      <div><span>03</span><p><b>结果不是裁决</b>AI 可能出错，重要决定必须通过官方渠道独立确认。</p></div>
+    </div>
+  </section>
+
+  <div class="toast" id="toast"><span>✓</span><p>已完成</p></div>
+  <script src="app.js"></script>
+</body>
+</html>
+
